@@ -8,7 +8,7 @@ A rolling snapshot is a projection of the current state of an aggregate at a giv
 
 The problem is that there may be a large number of events between the beginning of time and the current point. You can imagine that an event stream with a million or more events would be inefficient to load.
 
-The solution is to use a rolling snapshot to place a denormalization of the state at a given point. It is then be possible to play the events from that point forward to load the aggregate.
+The solution is to use a rolling snapshot to place a denormalization of the state at a given point. It is then possible to play the events from that point forward to load the aggregate.
 
 The process for rebuilding an aggregate changes when using rolling snapshots. Instead of reading forward from the beginning of time it is read backwards, putting the events on to a stack until  there are no more events left or a snapshot is found. The snapshot is then applied and the events would popped off the stack and applied until the stack was empty.
 
